@@ -1,0 +1,8 @@
+program errores {
+    var x:real = 12abc;
+    x = 1.2.3;
+    x = 5e+;
+    x = .75;
+    print("cadena sin cerrar);
+    x = 2 @ 3;
+}

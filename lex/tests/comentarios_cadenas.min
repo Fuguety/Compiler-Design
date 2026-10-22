@@ -1,0 +1,8 @@
+program comentarios {
+    // Un comentario de una linea con simbolos: + ** !=
+    print("Cadena con espacios y signos: + - * / %");
+    /* Un comentario
+       que ocupa tres
+       lineas */
+    print("Fin");
+}

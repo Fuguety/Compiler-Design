@@ -1,0 +1,23 @@
+program prueba {
+    const entero = 25;
+    const decimal = 3.14;
+    const cientifico1 = 1.3e-2;
+    const cientifico2 = 2E6;
+    const activo = true;
+    var _dato2:int;
+    var valor_real:real;
+    var valido:bool = false;
+    _dato2 = 10 + 2 - 3 * 4 / 2 % 3;
+    valor_real = 2 ** 3;
+    if (_dato2 < 20 and _dato2 <= 10 or not valido) {
+        print("todos los tokens");
+    } else {
+        read(_dato2);
+    }
+    for _dato2 = 3 to 8 { print(_dato2); }
+    for _dato2 = 8 downto 3 { print(_dato2); }
+    valido = _dato2 > 0;
+    valido = _dato2 >= 0;
+    valido = _dato2 == 0;
+    valido = _dato2 != 0;
+}
