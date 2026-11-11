@@ -1,0 +1,27 @@
+PROGRAM
+ID(errores)
+{
+VAR
+ID(x)
+:
+REAL
+=
+;
+ID(x)
+=
+;
+ID(x)
+=
+;
+ID(x)
+=
+;
+PRINT
+(
+ID(x)
+=
+CTE_ENTERA(2)
+CTE_ENTERA(3)
+;
+}
+Número de líneas: 8

@@ -1,0 +1,11 @@
+PROGRAM
+ID(error_comentario)
+{
+VAR
+ID(x)
+:
+INT
+=
+CTE_ENTERA(1)
+;
+Número de líneas: 4

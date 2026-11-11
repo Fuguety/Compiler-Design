@@ -23,10 +23,10 @@ help:
 	@printf '%s\n' '  make comments   Run the comments and strings test.'
 	@printf '%s\n' '  make errors     Run the lexical-error test.'
 	@printf '%s\n' '  make unclosed   Run the unclosed-comment test.'
-	@printf '%s\n' '  make clean      Delete generated C, executable and output/tokens.txt.'
+	@printf '%s\n' '  make clean      Delete generated C, executable and generated outputs.'
 	@printf '%s\n' '  make help       Show this help.'
 	@printf '%s\n' ''
-	@printf '%s\n' 'All test targets write recognized tokens to output/tokens.txt.'
+	@printf '%s\n' 'Each test writes output/tokens.txt and a named .txt copy in output/.'
 	@printf '%s\n' 'Compilation flags: $(CFLAGS)'
 
 $(GENERATED): $(SOURCE)
@@ -39,18 +39,22 @@ $(EXECUTABLE): $(GENERATED)
 test: $(EXECUTABLE)
 	mkdir -p $(OUTPUT_DIR)
 	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/todos_tokens.min
+	cp $(OUTPUT_DIR)/tokens.txt $(OUTPUT_DIR)/tokens_todos_tokens.txt
 
 comments: $(EXECUTABLE)
 	mkdir -p $(OUTPUT_DIR)
 	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/comentarios_cadenas.min
+	cp $(OUTPUT_DIR)/tokens.txt $(OUTPUT_DIR)/tokens_comentarios_cadenas.txt
 
 errors: $(EXECUTABLE)
 	mkdir -p $(OUTPUT_DIR)
 	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/errores.min
+	cp $(OUTPUT_DIR)/tokens.txt $(OUTPUT_DIR)/tokens_errores.txt
 
 unclosed: $(EXECUTABLE)
 	mkdir -p $(OUTPUT_DIR)
 	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/comentario_sin_cerrar.min
+	cp $(OUTPUT_DIR)/tokens.txt $(OUTPUT_DIR)/tokens_comentario_sin_cerrar.txt
 
 clean:
-	rm -f $(EXECUTABLE) $(GENERATED) $(OUTPUT_DIR)/tokens.txt
+	rm -f $(EXECUTABLE) $(GENERATED) $(OUTPUT_DIR)/*.txt

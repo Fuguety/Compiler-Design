@@ -1,0 +1,15 @@
+PROGRAM
+ID(comentarios)
+{
+PRINT
+(
+CTE_CADENA("Cadena con espacios y signos: + - * / %")
+)
+;
+PRINT
+(
+CTE_CADENA("Fin")
+)
+;
+}
+Número de líneas: 8
