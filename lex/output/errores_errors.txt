@@ -1,0 +1,6 @@
+LINEA 2. ERROR LEXICO: constante numerica mal formada: 12abc [ML-7Q]
+LINEA 3. ERROR LEXICO: constante numerica mal formada: 1.2.3 [ML-7Q]
+LINEA 4. ERROR LEXICO: constante numerica mal formada: 5e+ [ML-7Q]
+LINEA 5. ERROR LEXICO: constante numerica mal formada: .75 [ML-7Q]
+LINEA 6. ERROR LEXICO: cadena sin cerrar: "cadena sin cerrar); [ML-7Q]
+LINEA 7. ERROR LEXICO: caracter no reconocido: @ [ML-7Q]

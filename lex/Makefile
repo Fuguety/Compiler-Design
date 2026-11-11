@@ -10,6 +10,7 @@ OUTPUT_DIR = output
 GENERATED = $(BUILD_DIR)/lex.yy.c
 EXECUTABLE = $(BUILD_DIR)/$(TARGET)
 
+# Each test keeps tokens.txt and redirects lexical diagnostics to its own file.
 .PHONY: all help test comments errors unclosed clean
 
 all: $(EXECUTABLE)
@@ -26,7 +27,7 @@ help:
 	@printf '%s\n' '  make clean      Delete generated C, executable and generated outputs.'
 	@printf '%s\n' '  make help       Show this help.'
 	@printf '%s\n' ''
-	@printf '%s\n' 'Each test writes output/tokens.txt and a named .txt copy in output/.'
+	@printf '%s\n' 'Each test writes tokens and lexical errors to separate .txt files in output/.'
 	@printf '%s\n' 'Compilation flags: $(CFLAGS)'
 
 $(GENERATED): $(SOURCE)
@@ -38,22 +39,22 @@ $(EXECUTABLE): $(GENERATED)
 
 test: $(EXECUTABLE)
 	mkdir -p $(OUTPUT_DIR)
-	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/todos_tokens.min
+	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/todos_tokens.min 2> todos_tokens_errors.txt
 	cp $(OUTPUT_DIR)/tokens.txt $(OUTPUT_DIR)/tokens_todos_tokens.txt
 
 comments: $(EXECUTABLE)
 	mkdir -p $(OUTPUT_DIR)
-	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/comentarios_cadenas.min
+	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/comentarios_cadenas.min 2> comentarios_cadenas_errors.txt
 	cp $(OUTPUT_DIR)/tokens.txt $(OUTPUT_DIR)/tokens_comentarios_cadenas.txt
 
 errors: $(EXECUTABLE)
 	mkdir -p $(OUTPUT_DIR)
-	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/errores.min
+	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/errores.min 2> errores_errors.txt
 	cp $(OUTPUT_DIR)/tokens.txt $(OUTPUT_DIR)/tokens_errores.txt
 
 unclosed: $(EXECUTABLE)
 	mkdir -p $(OUTPUT_DIR)
-	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/comentario_sin_cerrar.min
+	cd $(OUTPUT_DIR) && ../$(EXECUTABLE) ../$(TEST_DIR)/comentario_sin_cerrar.min 2> comentario_sin_cerrar_errors.txt
 	cp $(OUTPUT_DIR)/tokens.txt $(OUTPUT_DIR)/tokens_comentario_sin_cerrar.txt
 
 clean:
